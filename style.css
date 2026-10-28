@@ -1,0 +1,21 @@
+:root{--bg:#f3f8fc;--ink:#14263a;--muted:#5b6f84;--blue:#0a8fd8;--red:#e8433c;--line:#d3e2ee;--card:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#0c1722;--ink:#e6f0f8;--muted:#8da3b8;--blue:#3db4f2;--red:#ff6b63;--line:#1e3347;--card:#122434}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS",system-ui,sans-serif}
+header{background:var(--blue);color:#fff;padding:28px 18px 22px;border-bottom:6px solid var(--red)}
+header h1{margin:0;font-size:1.9rem;letter-spacing:.5px}
+header p{margin:6px 0 0;opacity:.92;max-width:60ch}
+main{max-width:760px;margin:0 auto;padding:20px 14px 50px}
+a{color:var(--blue)}
+.seasons{display:grid;gap:12px;margin-top:8px}
+.seasons a{display:block;padding:16px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:10px;text-decoration:none;color:var(--ink);font-weight:bold}
+.seasons small{display:block;color:var(--muted);font-weight:normal}
+input{width:100%;padding:12px;margin:10px 0 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:1rem}
+input:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+ol{list-style:none;margin:0;padding:0}
+li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:12px 4px;border-bottom:1px solid var(--line)}
+.code{color:var(--blue);font-weight:bold}
+.nums{display:block;color:var(--muted);font-size:.85rem}
+.t{margin:0}
+.nav{display:flex;justify-content:space-between;margin-top:20px}
+footer{color:var(--muted);font-size:.85rem;margin-top:30px}
