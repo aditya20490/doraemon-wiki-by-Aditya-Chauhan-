@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Doraemon Wiki – Season</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><h1 id="h">Season</h1><p><a href="index.html" style="color:#fff">← All seasons</a></p></header>
+<main>
+<input id="q" type="search" placeholder="Search episode titles or numbers" aria-label="Search episodes">
+<ol id="list"></ol>
+<p id="empty" hidden>No episodes match your search.</p>
+<div class="nav"><a id="prev" href="#" hidden>← Previous season</a><a id="next" href="#" hidden>Next season →</a></div>
+</main>
+<script src="data.js"></script>
+<script>
+const s = Number(new URLSearchParams(location.search).get("s")) || 1;
+const eps = SEASONS[s] || [];
+document.getElementById("h").textContent = "Season " + s;
+document.title = "Doraemon Wiki – Season " + s;
+const list = document.getElementById("list");
+eps.forEach((row, i) => {
+  const [nums, title] = row.split("|");
+  const li = document.createElement("li");
+  const code = "S" + String(s).padStart(2,"0") + "E" + String(i+1).padStart(2,"0");
+  li.innerHTML = '<span class="code"></span><div><p class="t"></p><span class="nums"></span></div>';
+  li.querySelector(".code").textContent = code;
+  li.querySelector(".t").textContent = title;
+  li.querySelector(".nums").textContent = "Episode " + nums;
+  list.appendChild(li);
+});
+document.getElementById("q").addEventListener("input", e => {
+  const v = e.target.value.toLowerCase();
+  let shown = 0;
+  [...list.children].forEach(li => {
+    const ok = li.textContent.toLowerCase().includes(v);
+    li.hidden = !ok; if (ok) shown++;
+  });
+  document.getElementById("empty").hidden = shown > 0;
+});
+if (SEASONS[s-1]) { const p = document.getElementById("prev"); p.href = "season.html?s=" + (s-1); p.hidden = false; }
+if (SEASONS[s+1]) { const n = document.getElementById("next"); n.href = "season.html?s=" + (s+1); n.hidden = false; }
+</script>
+</body></html>
